@@ -17,8 +17,15 @@ const Navbar = ({ variant = "dark" }) => {
   return (
     <nav className={isLight ? "sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur" : "sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur"}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        <Link to="/" className={isLight ? "text-lg font-extrabold text-slate-800" : "text-lg font-bold text-sky-300"}>
-          ResumeForge
+        <Link to="/" className={isLight ? "flex items-center gap-1.5 text-[38px] font-black lowercase text-[#162747]" : "text-lg font-bold text-sky-300"}>
+          {isLight ? (
+            <>
+              <span>zety</span>
+              <span className="inline-block h-0 w-0 border-b-[7px] border-l-[11px] border-t-[7px] border-b-transparent border-t-transparent border-l-[#4b8cf4]" />
+            </>
+          ) : (
+            "ResumeForge"
+          )}
         </Link>
 
         <div className="flex items-center gap-3">
