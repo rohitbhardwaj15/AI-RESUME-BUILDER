@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/authSlice";
 
-const Navbar = () => {
+const Navbar = ({ variant = "dark" }) => {
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -12,29 +12,33 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const isLight = variant === "light";
+
   return (
-    <nav className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur">
+    <nav className={isLight ? "sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur" : "sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur"}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        <Link to="/" className="text-lg font-bold text-sky-300">
-          ResumeForge AI
+        <Link to="/" className={isLight ? "text-lg font-extrabold text-slate-800" : "text-lg font-bold text-sky-300"}>
+          ResumeForge
         </Link>
 
         <div className="flex items-center gap-3">
           {!token ? (
             <>
-              <Link to="/login" className="rounded-lg border border-slate-700 px-3 py-1.5 text-sm hover:border-sky-400">
-                Login
+              <Link to="/login" className={isLight ? "rounded-full border border-slate-300 px-4 py-1.5 text-sm font-semibold text-slate-700 hover:border-slate-500" : "rounded-lg border border-slate-700 px-3 py-1.5 text-sm hover:border-sky-400"}>
+                {isLight ? "MY ACCOUNT" : "Login"}
               </Link>
-              <Link to="/signup" className="rounded-lg bg-sky-500 px-3 py-1.5 text-sm font-semibold text-white hover:bg-sky-600">
-                Get Started
-              </Link>
+              {!isLight && (
+                <Link to="/signup" className="rounded-lg bg-sky-500 px-3 py-1.5 text-sm font-semibold text-white hover:bg-sky-600">
+                  Get Started
+                </Link>
+              )}
             </>
           ) : (
             <>
-              <Link to="/dashboard" className="rounded-lg border border-slate-700 px-3 py-1.5 text-sm hover:border-sky-400">
+              <Link to="/dashboard" className={isLight ? "rounded-full border border-slate-300 px-4 py-1.5 text-sm font-semibold text-slate-700 hover:border-slate-500" : "rounded-lg border border-slate-700 px-3 py-1.5 text-sm hover:border-sky-400"}>
                 Dashboard
               </Link>
-              <button onClick={onLogout} className="rounded-lg bg-rose-500 px-3 py-1.5 text-sm font-semibold text-white hover:bg-rose-600">
+              <button onClick={onLogout} className={isLight ? "rounded-full bg-slate-800 px-4 py-1.5 text-sm font-semibold text-white hover:bg-black" : "rounded-lg bg-rose-500 px-3 py-1.5 text-sm font-semibold text-white hover:bg-rose-600"}>
                 Logout
               </button>
             </>
