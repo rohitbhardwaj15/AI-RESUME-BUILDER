@@ -28,6 +28,9 @@ const LoginPage = () => {
           <h1 className="mb-4 text-2xl font-bold">Login</h1>
           <input className="mb-3 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2" placeholder="Email" value={form.email} onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))} />
           <input type="password" className="mb-4 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2" placeholder="Password" value={form.password} onChange={(e) => setForm((p) => ({ ...p, password: e.target.value }))} />
+          <div className="mb-4 text-right">
+            <Link to="/forgot-password" className="text-sm text-sky-300 hover:underline">Forgot password?</Link>
+          </div>
           <button disabled={loading} className="w-full rounded-lg bg-sky-500 py-2 font-semibold text-white">{loading ? "Please wait..." : "Login"}</button>
           <p className="mt-3 text-sm text-slate-300">No account? <Link to="/signup" className="text-sky-300">Create one</Link></p>
         </form>

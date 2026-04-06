@@ -62,9 +62,9 @@ const HomePage = () => (
       <div className="mx-auto grid max-w-[1040px] grid-cols-1 items-center gap-8 px-4 py-12 lg:grid-cols-2">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
           <p className="mb-3 text-[45px] font-bold text-[#1f3fbb]">Fast. Easy. Effective.</p>
-          <h1 className="max-w-xl text-[67px] font-black leading-[1.05] text-[#121f3f]">Zety. The Best Resume Maker Online.</h1>
+          <h1 className="max-w-xl text-[67px] font-black leading-[1.05] text-[#121f3f]">AI Resume Builder. The Best Resume Maker Online.</h1>
           <p className="mt-4 max-w-[620px] text-[36px] leading-[1.35] text-slate-700">
-            Whether you want to build a new resume from scratch or improve an existing one, let ResumeForge help you present your work.
+            Whether you want to build a new resume from scratch or improve an existing one, let AI Resume Builder help you present your work.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
             <Link to="/signup" className={ctaPrimary}>Create new resume</Link>

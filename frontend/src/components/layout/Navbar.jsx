@@ -20,11 +20,11 @@ const Navbar = ({ variant = "dark" }) => {
         <Link to="/" className={isLight ? "flex items-center gap-1.5 text-[38px] font-black lowercase text-[#162747]" : "text-lg font-bold text-sky-300"}>
           {isLight ? (
             <>
-              <span>zety</span>
+              <span className="normal-case">AI Resume Builder</span>
               <span className="inline-block h-0 w-0 border-b-[7px] border-l-[11px] border-t-[7px] border-b-transparent border-t-transparent border-l-[#4b8cf4]" />
             </>
           ) : (
-            "ResumeForge"
+            "AI Resume Builder"
           )}
         </Link>
 
