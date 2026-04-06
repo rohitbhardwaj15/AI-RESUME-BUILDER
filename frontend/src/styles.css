@@ -8,9 +8,14 @@
   --bg-c: #0c4a6e;
 }
 
+html {
+  font-size: 15px;
+}
+
 body {
   margin: 0;
   font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  line-height: 1.45;
   background: radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.15), transparent 40%),
     radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.12), transparent 35%),
     linear-gradient(135deg, var(--bg-a), var(--bg-b), #111827);
@@ -27,4 +32,10 @@ body {
   background: rgba(15, 23, 42, 0.72);
   border: 1px solid rgba(148, 163, 184, 0.2);
   backdrop-filter: blur(12px);
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
 }
