@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/authSlice";
+import logo from "../../assets/logo.svg";
 
 const Navbar = ({ variant = "dark" }) => {
   const { token } = useSelector((state) => state.auth);
@@ -20,8 +21,7 @@ const Navbar = ({ variant = "dark" }) => {
         <Link to="/" className={isLight ? "flex items-center gap-1.5 text-2xl font-black lowercase text-[#162747]" : "text-lg font-bold text-sky-300"}>
           {isLight ? (
             <>
-              <span className="normal-case">AI Resume Builder</span>
-              <span className="inline-block h-0 w-0 border-b-[7px] border-l-[11px] border-t-[7px] border-b-transparent border-t-transparent border-l-[#4b8cf4]" />
+              <img src={logo} alt="AI Resume Builder logo" className="h-8 w-auto" />
             </>
           ) : (
             "AI Resume Builder"

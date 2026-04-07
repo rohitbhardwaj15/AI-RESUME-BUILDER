@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import dummyProfile from "../../assets/dummy_profile.png";
 
 const testimonials = [
   {
@@ -33,8 +34,13 @@ const TestimonialsSection = () => (
         >
           <p className="text-sm leading-6 text-slate-600">"{item.quote}"</p>
           <footer className="mt-4 border-t border-slate-100 pt-3">
-            <p className="text-sm font-semibold text-slate-900">{item.name}</p>
-            <p className="text-xs text-slate-500">{item.role}</p>
+            <div className="flex items-center gap-3">
+              <img src={dummyProfile} alt={item.name} className="h-9 w-9 rounded-full object-cover" />
+              <div>
+                <p className="text-sm font-semibold text-slate-900">{item.name}</p>
+                <p className="text-xs text-slate-500">{item.role}</p>
+              </div>
+            </div>
           </footer>
         </motion.blockquote>
       ))}
