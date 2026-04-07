@@ -1,27 +1,25 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { dummyResumeData } from "../../assets/dummyResumeData";
 
-const templates = [
-  { name: "Executive", tone: "#0f4c81" },
-  { name: "Modern", tone: "#7b3fe4" },
-  { name: "Classic", tone: "#334155" },
-  { name: "Creative", tone: "#0284c7" }
-];
-
-const TemplatePreviewCard = ({ name, tone }) => (
+const TemplatePreviewCard = ({ resume }) => (
   <motion.article whileHover={{ y: -4 }} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
     <div className="relative h-64 bg-slate-50 p-4">
-      <div className="absolute inset-y-4 left-4 w-[26%] rounded-lg" style={{ backgroundColor: tone }} />
+      <div className="absolute inset-y-4 left-4 w-[26%] rounded-lg" style={{ backgroundColor: resume.accent_color }} />
       <div className="ml-[32%] space-y-1.5">
-        <div className="h-3 w-24 rounded" style={{ backgroundColor: tone, opacity: 0.6 }} />
+        <div className="h-3 w-24 rounded" style={{ backgroundColor: resume.accent_color, opacity: 0.6 }} />
         <div className="h-2 w-16 rounded bg-slate-300" />
         {Array.from({ length: 12 }).map((_, i) => (
           <div key={i} className="h-1.5 rounded bg-slate-200" />
         ))}
       </div>
+      <img src={resume.personal_info?.image} alt={resume.personal_info?.full_name} className="absolute bottom-4 left-6 h-10 w-10 rounded-full border-2 border-white object-cover shadow" />
     </div>
     <div className="flex items-center justify-between border-t border-slate-100 px-4 py-3">
-      <p className="text-sm font-semibold text-slate-700">{name}</p>
+      <div>
+        <p className="text-sm font-semibold text-slate-700">{resume.personal_info?.full_name}</p>
+        <p className="text-xs text-slate-500">{resume.personal_info?.profession}</p>
+      </div>
       <Link to="/signup" className="text-xs font-semibold text-sky-700 hover:underline">Use Template</Link>
     </div>
   </motion.article>
@@ -37,8 +35,8 @@ const TemplatePickerSection = () => (
     </div>
 
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {templates.map((template) => (
-        <TemplatePreviewCard key={template.name} {...template} />
+      {dummyResumeData.map((resume) => (
+        <TemplatePreviewCard key={resume.title} resume={resume} />
       ))}
     </div>
 
