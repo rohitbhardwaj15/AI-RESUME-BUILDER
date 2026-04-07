@@ -17,7 +17,11 @@ const ForgotPasswordPage = () => {
       setResetUrl(data?.data?.resetUrl || "");
       toast.success("If the email exists, reset instructions are ready.");
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to request reset link");
+      const fallbackMsg =
+        window.location.hostname.includes("vercel.app")
+          ? "Reset link request failed. Configure VITE_API_URL in Vercel to your deployed backend API."
+          : "Failed to request reset link";
+      toast.error(err.response?.data?.message || fallbackMsg);
     } finally {
       setLoading(false);
     }

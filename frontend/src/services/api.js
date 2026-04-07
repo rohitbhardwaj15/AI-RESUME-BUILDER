@@ -1,7 +1,19 @@
 import axios from "axios";
 
+const resolveApiBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) return import.meta.env.VITE_API_URL;
+
+  if (typeof window !== "undefined") {
+    const host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1") return "http://localhost:5000/api";
+  }
+
+  // Production-safe default. Requires a reverse proxy or same-origin API route.
+  return "/api";
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api"
+  baseURL: resolveApiBaseUrl()
 });
 
 api.interceptors.request.use((config) => {
